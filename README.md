@@ -21,7 +21,7 @@ Hardware & Sofware specification:
 - Minikube
 - Kubectl
 
-Kubernate (K8S) - single node cluster
+Kubernates (K8S) - single node cluster
 - 1 node
 - 2 replica pots for the app
 - 1 pot for the Database
@@ -168,7 +168,6 @@ or
 
 `kubectl describe pods <that_pod_name>`
 
-
 - Apply the app deployment object & service  (*jobportal-deployment.yaml*). There will be 2 replica *pods* spawn.
 
 `kubectl apply -f jobportal-deployment.yaml`
@@ -183,19 +182,26 @@ or
 
 - read *https://stackoverflow.com/questions/65669818/dns-error-with-mysql-integration-with-kubernetes-cluster*
 
-- If you use Docker dekstop When deploying the database-deployment.yaml make sure that you first execute:
+- Delete all running pods with
+
+`kubectl delete all --all --all-namespaces`
+
+Then stop & start the minikube
+
+`minikube stop`
+
+`minikube start --driver=docker`
+
+then execute these steps in order:
 
 `@FOR /f "tokens=*" %i IN ('minikube -p minikube docker-env --shell cmd') DO @%i`
 
-close the terminal (open new terminal) then execute the command again :
-
-`@FOR /f "tokens=*" %i IN ('minikube -p minikube docker-env --shell cmd') DO @%i `
-
-
-then apply the database deployment object and service build descriptor
-
 `kubectl apply -f database-deployment.yaml`
 
-Because Cofiguring Docker CLI to access Docker from Minikube VM is somehow breaking the *DNS* resolution within the cluster.
+close the terminal, open new one then do
+
+`kubectl apply -f jobportal-deployment.yaml`
+
+The order in the execution steps above may sounds like a weird anomaly but it works in my case.  Could it be because Cofiguring Docker CLI to access Docker from Minikube VM is somehow breaking the *DNS* resolution within the cluster? And why it works straightforwardly on other OS such as macOS? Not sure.
 
 - It's done now expose the app service then access the APIs.
