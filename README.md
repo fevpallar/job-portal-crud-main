@@ -105,7 +105,7 @@ So in this case the services availabe on http://localhost:7080/
 ![10-services.png](https://i.postimg.cc/nhrsx7Gb/10-services.png)
 
 
-7. Use Postman to access the APIs on  http://localhost:7080/
+- Use Postman to access the APIs on  http://localhost:7080/
 
 Untuk coba URL-URL (endpoint) APInya bisa di lihat di dalam folder **\job-portal-crud-main\src\main\resources**. Filenya bernama **DATA TEST.txt**
 
@@ -123,11 +123,7 @@ Untuk coba URL-URL (endpoint) APInya bisa di lihat di dalam folder **\job-portal
 ![12.png](https://i.postimg.cc/3RcSL218/12.png)
 
 
-------------
-
-====================================================
-
-------------
+------------------------
 
 ## BUILD THE PROJECT FROM SCRATCH
 Based on Windows OS
@@ -141,7 +137,7 @@ Based on Windows OS
 
 It will pull the Kubernates/K8S engine image (*gcr.io/k8s-minikube/kicbase*) into the local Docker registry
 
-5. Sync the terminal with the Kubernate context. 
+- Sync the terminal with the Kubernate context. 
 
 *Note : This is important step. This is to configure Docker CLI to access Docker from Minikube VM so that later we dont run containers within our local host machine but inside minikube VM docker deamon.*
 
@@ -172,7 +168,7 @@ The *pod* should be now in running state, check it with kubectly get pods. If th
 
 or
 
-`kubectl describe pods that_pod_name>`
+`kubectl describe pods <that_pod_name>`
 
 
 - Apply the app deployment object & service  (*jobportal-deployment.yaml*). There will be 2 replica *pods* spawn.
@@ -181,7 +177,7 @@ or
 
 *Note that If you (only if you) log the app pods and get exceptions such as "Unknown database host" or any issues related to the database connection then there is an issue with the DNS resolution. The app doesn't connect the the db through some exposed services instead through the DNS described in the database-deployment.yaml . This kind of problems often occurs when running Docker in Windows OS. It's known that debugging DNS issue in a local K8S cluster is quite tricky. It took me hours to debug. But here are some suggestions:*
 
-1. Restart the Kubernate `dnscore` with :
+- Restart the Kubernate `dnscore` with :
 
 `kubectl -n kube-system rollout restart deployment coredns`
 
