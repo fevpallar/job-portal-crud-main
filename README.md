@@ -10,7 +10,7 @@
 
 
 
-CRU-D stands for "CReate, Update *minus* the Delete"operations. It is a quick-mini project to demonstrate common hypothetical *create & update* operations on such online *job search site*. The project was deployed in a single node Kubernate cluster.
+CRU-D stands for "CReate, Update *minus* the Delete" operations. It is a quick-mini project to demonstrate common hypothetical *create & update* operations on such online *job search site*. The project was deployed in a single node Kubernate cluster.
 
 Hardware & Sofware specification:
 - Windows OS
@@ -31,20 +31,11 @@ Kubernate (K8S) - single node cluster
 
 ## RUNNING THE APP.
 
-Based on Windows & Docker dekstop 
+Based on Windows & Docker Dekstop 
 
-Dowload the Docker Dekstop, Minikube, kubectl. See the internet to read how to set them up on different OS.
+Download the Docker Dekstop, Minikube, kubectl. See the internet to read how to set them up on different OS.
 
-
-- Pull the project image
-
-`docker pull fevly/job-portal-crud-kube:1.0`
-
-and pull the *MySQL 5.7* image
-
-`docker pull MySQL 5.7`
-
-- Start the Minikube container (it will pull the *Minikube* (*K8S* engine). The image is *gcr.io/k8s-minikube/kicbase *)
+- Start the Minikube container (it will pull the *Minikube* (*K8S* engine). The image is *gcr.io/k8s-minikube/kicbase*)
 
 `minikube start --driver=docker`
 
@@ -64,6 +55,13 @@ or with **bash/zsh**
 
 `eval $(minikube -p <profile> docker-env) `
 
+- Pull the project image
+
+`docker pull fevly/job-portal-crud-kube:1.0`
+
+and pull the *MySQL 5.7* image
+
+`docker pull MySQL 5.7`
 
 - From the terminal get into the project root directory then apply the database deployment object and service defined in **database-deployment.yaml**
 
@@ -71,13 +69,13 @@ For e.g.
 
 `D:\Fevly\job-portal-crud-main>kubectl apply -f database-deployment.yaml`
 
-You can  log the *pods* with :
+You can log the *pods* with :
 
 `kubectl logs -f <the_pod_name>`
 
 ![4.png](https://i.postimg.cc/pL1tN5qS/4.png)
 
-- Close the terminal. Open and go to root project directory again and apply the app deployment object & service  (**jobportal-deployment.yaml**). There will be 2 replica pods spawn.
+- Close the terminal. Open it and go to root project directory again and apply the app deployment object & service  (**jobportal-deployment.yaml**). There will be 2 replica pods spawn.
 
 `kubectl apply -f jobportal-deployment.yaml`
 
@@ -139,7 +137,7 @@ It will pull the Kubernates/K8S engine image (*gcr.io/k8s-minikube/kicbase*) int
 
 - Sync the terminal with the Kubernate context. 
 
-*Note : This is important step. This is to configure Docker CLI to access Docker from Minikube VM so that later we dont run containers within our local host machine but inside minikube VM docker deamon.*
+*Note : This is an important step. This is to configure Docker CLI to access Docker from Minikube VM so that later we dont run containers within our local host machine but inside minikube VM docker deamon.*
 
 **CMD**
 
@@ -158,11 +156,11 @@ It will pull the Kubernates/K8S engine image (*gcr.io/k8s-minikube/kicbase*) int
 
 `docker build -t job-portal-crud-kube:1.0 .`
 
-- Apply the database deployment  object & service  (**database-deployment.yaml**)
+- Apply the database deployment object & service  (**database-deployment.yaml**)
 
 `   kubectl apply -f database-deployment.yaml`
 
-The *pod* should be now in running state, check it with kubectly get pods. If there are any errors try to debug it with :
+The *pod* should be now in running state, check it with `kubectl get pods`. If there are any errors then try to debug it with :
 
 `kubectl logs <that_pod_name>`
 
@@ -175,13 +173,13 @@ or
 
 `kubectl apply -f jobportal-deployment.yaml`
 
-*Note that If you (only if you) log the app pods and get exceptions such as "Unknown database host" or any issues related to the database connection then there is an issue with the DNS resolution. The app doesn't connect the the db through some exposed services instead through the DNS described in the database-deployment.yaml . This kind of problems often occurs when running Docker in Windows OS. It's known that debugging DNS issue in a local K8S cluster is quite tricky. It took me hours to debug. But here are some suggestions:*
+*Note that If you (only if you) log the app pods and get exceptions such as "Unknown database host" or any issues related to the database connection then there is an issue with the DNS resolution. The app doesn't connect to the DB through some exposed services instead, through the DNS described in the database-deployment.yaml . This kind of problems often occurs when running Docker in Windows OS which resides inside the WSL kernel. It's known that debugging DNS issue in a local K8S cluster is quite tricky. It took me hours to debug. But here are some suggestions:*
 
-- Restart the Kubernate `dnscore` with :
+- Restart the Kubernate `coredns` with :
 
 `kubectl -n kube-system rollout restart deployment coredns`
 
-- If you already have  configured  some PersistentVolume(provisioned storage in the cluster ) then delete that. Or delete the entire Minikube container and start over
+- If you already have configured  some PersistentVolume(provisioned storage in the cluster ) then delete that. Or delete the entire Minikube container and start over
 
 - read *https://stackoverflow.com/questions/65669818/dns-error-with-mysql-integration-with-kubernetes-cluster*
 
