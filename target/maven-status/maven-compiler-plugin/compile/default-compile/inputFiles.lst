@@ -1,0 +1,11 @@
+D:\Fevly\job-portal-crud-main\src\main\java\com\fevly\jobportal\entity\Lowongan.java
+D:\Fevly\job-portal-crud-main\src\main\java\com\fevly\jobportal\Main.java
+D:\Fevly\job-portal-crud-main\src\main\java\com\fevly\jobportal\entity\Lamaran.java
+D:\Fevly\job-portal-crud-main\src\main\java\com\fevly\jobportal\entity\Pelamar.java
+D:\Fevly\job-portal-crud-main\src\main\java\com\fevly\jobportal\repository\PelamarRepository.java
+D:\Fevly\job-portal-crud-main\src\main\java\com\fevly\jobportal\repository\LowonganRepository.java
+D:\Fevly\job-portal-crud-main\src\main\java\com\fevly\jobportal\repository\PerusahaanRepository.java
+D:\Fevly\job-portal-crud-main\src\main\java\com\fevly\jobportal\entity\Perusahaan.java
+D:\Fevly\job-portal-crud-main\src\main\java\com\fevly\jobportal\repository\LamaranRepository.java
+D:\Fevly\job-portal-crud-main\src\main\java\com\fevly\jobportal\service\PortalService.java
+D:\Fevly\job-portal-crud-main\src\main\java\com\fevly\jobportal\controller\PortalController.java

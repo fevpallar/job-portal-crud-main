@@ -1,0 +1,11 @@
+com\fevly\jobportal\service\PortalService.class
+com\fevly\jobportal\entity\Lamaran.class
+com\fevly\jobportal\repository\LamaranRepository.class
+com\fevly\jobportal\entity\Perusahaan.class
+com\fevly\jobportal\entity\Pelamar.class
+com\fevly\jobportal\Main.class
+com\fevly\jobportal\repository\LowonganRepository.class
+com\fevly\jobportal\repository\PelamarRepository.class
+com\fevly\jobportal\repository\PerusahaanRepository.class
+com\fevly\jobportal\entity\Lowongan.class
+com\fevly\jobportal\controller\PortalController.class
