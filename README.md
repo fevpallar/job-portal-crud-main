@@ -1,4 +1,4 @@
-# CR-U Mini Job Portal
+# CRU-D Mini Job Portal
 
 
 
@@ -10,7 +10,7 @@
 
 
 
-CR-U stands for "CReate *minus* the Update"operations. It is a quick-mini project to demonstrate common hypothetical *create & update* operations on such online *job search site*. The project was deployed in a single node Kubernate cluster.
+CRU-D stands for "CReate, Update *minus* the Delete"operations. It is a quick-mini project to demonstrate common hypothetical *create & update* operations on such online *job search site*. The project was deployed in a single node Kubernate cluster.
 
 Hardware & Sofware specification:
 - Windows OS
